@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title> {{ $title }} </title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/gambar/icon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/gambar/shop-icon.ico') }}" />
 
     {{-- CSS DAN JS LOADER --}}
     <link href="{{ asset('assets/layouts/vertical-light-menu/css/light/loader.css') }}" rel="stylesheet"
@@ -122,7 +122,7 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="/assets/src/assets/img/profile-30.png"
+                                <img alt="avatar" src="/assets/src/assets/img/drag-1.jpeg"
                                     class="rounded-circle">
                             </div>
                         </div>

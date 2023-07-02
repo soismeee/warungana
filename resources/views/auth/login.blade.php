@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>Login aplikasi </title>
-    <link rel="icon" type="image/x-icon" href="/assets/src/assets/img/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="/assets/gambar/shop-icon.ico"/>
     <link href="/assets/layouts/vertical-light-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="/assets/layouts/vertical-light-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />
     <script src="/assets/layouts/vertical-light-menu/loader.js"></script>

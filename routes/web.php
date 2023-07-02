@@ -25,7 +25,7 @@ route::get('/login', [AuthController::class, 'index'])->name('login')->middlewar
 Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
-route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+route::get('/', [HomeController::class, 'index'])->middleware('auth');
 route::get('/json_harian', [HomeController::class, 'json_harian'])->name('json_harian')->middleware('auth');
 // route data master
 route::resource('/usr', UserController::class)->middleware('auth');
