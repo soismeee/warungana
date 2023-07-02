@@ -143,8 +143,8 @@ class RekapanController extends Controller
     }
 
     public function json_tahunan(){
-        $tanggal = request('tanggal');
-        $tahun = date('Y', strtotime($tanggal));
+        // $tanggal = request('tanggal');
+        $tahun = request('tanggal');
 
         $data[] = [
             'jan' => [
@@ -227,9 +227,7 @@ class RekapanController extends Controller
     }
 
     public function getRekapTahunan(){
-        $tanggal = request('tanggal');
-        $month = date('m', strtotime($tanggal));
-        $year = date('Y', strtotime($tanggal));
+        $year = request('tanggal');
         $transaksi = Transaksi::whereYear('tanggal_transaksi', $year);
         $pendapatan = $transaksi->sum('total_harga');
         $penjualan = $transaksi->sum('jumlah_item');

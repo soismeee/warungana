@@ -44,7 +44,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Cari ditanggal lain</h5>
+                            <h5 class="card-title">Cari dibulan lain</h5>
                             <div class="input-group mb-3">
                                 <input type="month" class="form-control" placeholder="cari tanggal" name="tanggal" id="tanggal" value="{{ date('Y-m') }}">
                                 <button class="btn btn-primary" id="search">Cari</button>
