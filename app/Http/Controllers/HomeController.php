@@ -27,11 +27,11 @@ class HomeController extends Controller
     }
 
     public function json_harian(){
-        $harian = DetailTransaksi::whereDate('created_at', date('Y-m-d'))->get();
-        if ($harian) {
+        $harian = DetailTransaksi::whereDate('created_at', date('Y-m-d'));
+        if ($harian->count() > 0) {
             $no = 1;
             $grand_total = 0;
-            foreach ($harian as $item) {
+            foreach ($harian->get() as $item) {
                 $data[] = [
                     'no' => $no,
                     'nama' => $item->nama_barang,
@@ -51,7 +51,7 @@ class HomeController extends Controller
         } else {
             return response()->json([
                 'status' => 401,
-                'message' => "Data tidak ditemukan"
+                'message' => "Belum ada transaksi di hari ini"
             ]);
         }
         

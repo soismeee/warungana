@@ -89,7 +89,11 @@
             </div>
 
             <ul class="navbar-item flex-row ms-lg-auto ms-0">
-
+                @if ($menu == 't')
+                <li class="nav-item">
+                    <a href="/" class="btn btn-sm btn-primary">Home</a>
+                </li>
+                @else
                 <li class="nav-item theme-toggle-item">
                     <a href="javascript:void(0);" class="nav-link theme-toggle">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -131,8 +135,8 @@
                                     &#x1F44B;
                                 </div>
                                 <div class="media-body">
-                                    <h5>Shaun Park</h5>
-                                    <p>Project Leader</p>
+                                    <h5>{{ auth()->user()->name }}</h5>
+                                    <p>{{ auth()->user()->username }}</p>
                                 </div>
                             </div>
                         </div>
@@ -158,12 +162,13 @@
                             </a>
                         </div>
                     </div>
-
                 </li>
+                @endif
             </ul>
         </header>
     </div>
     <!--  END NAVBAR  -->
+    
     <!-- Modal -->
     <div class="modal fade" id="modalLogout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

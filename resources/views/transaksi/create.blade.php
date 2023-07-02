@@ -28,10 +28,10 @@
                                         </div>
                                         <div class="row mt-3">
                                             <div class="d-grid col-6">
-                                                <button class="btn btn-lg btn-warning add-transaksi" data-kategori_harga="grosir" data-warna="danger"> GROSIR </button>
+                                                <button class="btn btn-lg btn-danger add-transaksi" data-kategori_harga="grosir" data-warna="danger"> GROSIR </button>
                                             </div>
                                             <div class="d-grid col-6">
-                                                <button class="btn btn-lg btn-danger add-transaksi" data-kategori_harga="eceran" data-warna="info"> ECERAN </button>
+                                                <button class="btn btn-lg btn-secondary add-transaksi" data-kategori_harga="eceran" data-warna="info"> ECERAN </button>
                                             </div>
                                         </div>
                                 </div>

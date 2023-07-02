@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -117,7 +118,7 @@ class RekapanController extends Controller
 
     public function getDetailRekapBulanan(){
         $tanggal = request('tanggal');
-        $transaksi = Transaksi::whereDate('tanggal_transaksi', $tanggal)->get();
+        $transaksi = DetailTransaksi::whereDate('created_at', $tanggal)->get();
 
         if ($transaksi) {
             return response()->json([
@@ -134,10 +135,109 @@ class RekapanController extends Controller
     }
 
     public function tahunan(){
-        return view('rekapan.harian', [
+        return view('rekapan.tahunan', [
             'title' => 'Rekapan tahunan',
             'menu' => 'rekap',
             'submenu' => 'rt'    
+        ]);
+    }
+
+    public function json_tahunan(){
+        $tanggal = request('tanggal');
+        $tahun = date('Y', strtotime($tanggal));
+
+        $data[] = [
+            'jan' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '01')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '01')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '01')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '01')->sum('total_harga')
+            ],
+            'feb' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '02')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '02')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '02')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '02')->sum('total_harga')
+            ],
+            'mar' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '03')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '03')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '03')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '03')->sum('total_harga')
+            ],
+            'apr' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '04')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '04')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '04')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '04')->sum('total_harga')
+            ],
+            'mei' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '05')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '05')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '05')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '05')->sum('total_harga')
+            ],
+            'jun' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '06')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '06')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '06')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '06')->sum('total_harga')
+            ],
+            'jul' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '07')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '07')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '07')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '07')->sum('total_harga')
+            ],
+            'agt' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '08')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '08')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '08')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '08')->sum('total_harga')
+            ],
+            'sep' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '09')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '09')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '09')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '09')->sum('total_harga')
+            ],
+            'okt' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '10')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '10')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '10')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '10')->sum('total_harga')
+            ],
+            'nov' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '11')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '11')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '11')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '11')->sum('total_harga')
+            ],
+            'des' => [
+                'harga' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '12')->sum('total_harga'),
+                'jumlah' => Transaksi::whereYear('tanggal_transaksi', $tahun)->whereMonth('tanggal_transaksi', '12')->sum('jumlah_item'),
+                'eceran' => DetailTransaksi::where('kategori_harga', 'eceran')->whereYear('created_at', $tahun)->whereMonth('created_at', '12')->sum('total_harga'),
+                'grosir' => DetailTransaksi::where('kategori_harga', 'grosir')->whereYear('created_at', $tahun)->whereMonth('created_at', '12')->sum('total_harga')
+            ],
+        ];
+
+        return response()->json([
+            'data' => $data,
+        ]);
+    }
+
+    public function getRekapTahunan(){
+        $tanggal = request('tanggal');
+        $month = date('m', strtotime($tanggal));
+        $year = date('Y', strtotime($tanggal));
+        $transaksi = Transaksi::whereYear('tanggal_transaksi', $year);
+        $pendapatan = $transaksi->sum('total_harga');
+        $penjualan = $transaksi->sum('jumlah_item');
+        
+        return response()->json([
+            'status' => 200,
+            'pendapatan' => $pendapatan,
+            'penjualan' => $penjualan
         ]);
     }
 }

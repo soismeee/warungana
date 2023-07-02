@@ -73,6 +73,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail transaksi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <svg> ... </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive" id="tabel-detail">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">barang</th>
+                                    <th class="text-center" scope="col">Jumlah</th>
+                                    <th class="text-center" scope="col">Total</th>
+                                </tr>
+                                <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal"><i class="flaticon-cancel-12"></i> Tutup </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')
@@ -188,12 +222,27 @@
                     if (response.status == 401) {
                         sweetAlert('warning', response.message);
                     } else {
-                        // belum selesai
+                        $('#modalDetail').modal('show');
+                        $('#tabel-detail table tbody').empty();
+                        var detaildata = response.data
+                        var no = 1;
+                        detaildata.forEach((params) => {
+                            let body = 
+                            `<tr>
+                                <td>`+no+`</td>
+                                <td>`+params.nama_barang+`</td>
+                                <td style="text-align:center">`+params.jml_barang+` Pcs</td>
+                                <td style="text-align:center">Rp. `+rupiah(params.total_harga)+`</td>
+                            </tr>`
+                            $('#tabel-detail table tbody').append(body);
+                        no++;
+                        })
                     }
                 }
             });
         });
 
+        
         // template sweetalert
         function sweetAlert(icon, title) {
             Swal.fire({
@@ -201,5 +250,7 @@
                 title: title,
             });
         }
+
+
     </script>
 @endpush

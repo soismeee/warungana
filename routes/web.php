@@ -54,3 +54,5 @@ route::post('/json_rh', [RekapanController::class, 'json_harian'])->name('json_r
 route::get('get_ppb', [RekapanController::class, 'getRekapBulanan'])->name('get_ppb')->middleware('auth');
 route::get('/sd_rb', [RekapanController::class, 'getDetailRekapBulanan'])->name('sd_rb')->middleware('auth');
 route::post('/json_rb', [RekapanController::class, 'json_bulanan'])->name('json_rb')->middleware('auth');
+route::get('get_pph', [RekapanController::class, 'getRekapTahunan'])->name('get_pph')->middleware('auth');
+route::get('/json_rt', [RekapanController::class, 'json_tahunan'])->name('json_rt')->middleware('auth');
