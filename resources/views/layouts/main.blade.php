@@ -122,8 +122,7 @@
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar-container">
                             <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                <img alt="avatar" src="/assets/src/assets/img/drag-1.jpeg"
-                                    class="rounded-circle">
+                                <img alt="avatar" src="/assets/src/assets/img/drag-1.jpeg" class="rounded-circle">
                             </div>
                         </div>
                     </a>

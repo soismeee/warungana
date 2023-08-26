@@ -134,9 +134,28 @@
                 </a>
             </li>
 
+            <li class="menu {{ $menu == 'pembelian' ? 'active' : '' }}">
+                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="{{ $menu == 'pembelian' ? 'true' : 'false' }}" class="dropdown-toggle collapsed">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <span>Pembelian</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                <ul class="submenu list-unstyled collapse {{ $menu == 'pembelian' ? 'show' : '' }}" id="ecommerce" data-bs-parent="#accordionExample" style="">
+                    <li class="{{ $submenu == 'pbc' ? 'active' : '' }}">
+                        <a href="{{ route('pb.create') }}"> Input pembelian </a>
+                    </li>
+                    <li class="{{ $submenu == 'pb' ? 'active' : '' }}">
+                        <a href="{{ route('pb.index') }}"> Data pembelian </a>
+                    </li>                       
+                </ul>
+            </li>
+
             <li class="menu {{ $menu == 'rekap' ? 'active' : '' }}">
-                <a href="#layouts" data-bs-toggle="collapse"
-                    aria-expanded="{{ $menu == 'rekap' ? 'true' : 'false' }}" class="dropdown-toggle">
+                <a href="#layouts" data-bs-toggle="collapse" aria-expanded="{{ $menu == 'rekap' ? 'true' : 'false' }}" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

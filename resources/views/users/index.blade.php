@@ -44,6 +44,13 @@
                                         <input type="password" name="password" id="password" class="form-control input" placeholder="Buat password">
                                     </div>
                                     <div class="col-12">
+                                        <label for="role" class="form-label">Role pengguna</label>
+                                        <select name="role" id="role" class="form-select">
+                                            <option value="Admin">Admin</option>
+                                            <option value="Kasir">Kasir</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
                                         <button type="submit" id="add-data" class="btn btn-primary">Simpan Data</button>
                                         <button class="btn btn-info text-white" style="display: none" id="update-data">Ubah Data</button>
                                     </div>
@@ -58,8 +65,9 @@
                             <thead>
                                 <tr>
                                     <th width="10%">No</th>
-                                    <th width="40%">Name</th>
-                                    <th width="40%">username</th>
+                                    <th width="30%">Name</th>
+                                    <th width="30%">username</th>
+                                    <th width="20%">Role</th>
                                     <th width="10%">#</th>
                                 </tr>
                             </thead>
@@ -120,6 +128,11 @@
                 {
                     "render": function(data, type, row, meta){
                     return row.username
+                    }
+                },
+                {
+                    "render": function(data, type, row, meta){
+                    return row.role
                     }
                 },
                 {
@@ -212,6 +225,7 @@
                         $('#id').val(response.data.id);
                         $('#name').val(response.data.name);
                         $('#username').val(response.data.username);
+                        $('#role').val(response.data.role);
                     }
                 }
             });

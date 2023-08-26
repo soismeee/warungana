@@ -19,9 +19,9 @@ class UserController extends Controller
     }
 
     public function json(){
-        $columns = ['id','name','username'];
+        $columns = ['id','name','username', 'role'];
         $orderBy = $columns[request()->input("order.0.column")];
-        $data = User::select('id', 'name', 'username');
+        $data = User::select('id', 'name', 'username', 'role');
 
         if(request()->input("search.value")){
             $data = $data->where(function($query){
@@ -52,6 +52,7 @@ class UserController extends Controller
             'name' => 'required',
             'username' => 'required|unique:users',
             'password' => 'required',
+            'role' => 'required',
         ]);
 
         if ($validate->fails()) {
@@ -65,6 +66,7 @@ class UserController extends Controller
             $user->id = intval((microtime(true) * 10000));
             $user->name = $request->name;
             $user->username = $request->username;
+            $user->role = $request->role;
             $user->password = Hash::make($request->password);
             $user->save();
             return response()->json([
@@ -95,6 +97,7 @@ class UserController extends Controller
         $rules = $request->validate([
             'name' => 'required|max:255',
             'username' => 'required',
+            'role' => 'required',
         ]);
 
         if ($request->password !== null) {

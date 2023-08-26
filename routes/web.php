@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\RekapanController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
@@ -44,6 +45,10 @@ route::get('/pr/{id}', [TransaksiController::class, 'print'])->name('pr')->middl
 route::post('/save', [TransaksiController::class, 'store'])->name('save')->middleware('auth');
 route::post('/json_dt', [TransaksiController::class, 'json'])->name('json_dt')->middleware('auth');
 route::delete('/del_t/{id}', [TransaksiController::class, 'destroy'])->name('del_t')->middleware('auth');
+
+// route pembelian
+route::resource('/pb', PembelianController::class)->middleware('auth');
+route::post('/json_pb', [PembelianController::class, 'json'])->name('json_pb')->middleware('auth');
 
 // route rekap laporan
 route::get('rh', [RekapanController::class, 'harian'])->name('rh')->middleware('auth');
